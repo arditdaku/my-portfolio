@@ -15,44 +15,87 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'Portfolio',
+            'My portfolio',
             textAlign: TextAlign.center,
           ),
           backgroundColor: Colors.red[800],
         ),
         body: Container(
-          child: Column(
-            children: [
-              Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.6),
-                      child: Text(
-                        'Professional Skills',
-                        style: TextStyle(
-                          color: Color(0xFFFD4345),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                        ),
-                        textAlign: TextAlign.center,
+          child: SafeArea(
+            child: Container(
+              child: ListView(
+                children: [
+                  //Profile Picture
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    child: CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage('images/mypic.jpg'),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      'Ardit Daku',
+                      style: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontFamily: 'Anton',
                       ),
                     ),
-                    ListItem('Java', 'Spring Boot Basic'),
-                    ListItem('HTML'),
-                    ListItem('JavaScript & TypeScript'),
-                    ListItem('Flutter','Basic'),
-                  ],
-                ),
-              )
-            ],
+                  ),
+                  HeadingText('Software Developer'),
+                  Container(
+                    width: double.infinity,
+                    color: Colors.white38,
+                    height: 2.0,
+                    margin: EdgeInsets.only(
+                        left: 50.0, right: 50.0, top: 10.0, bottom: 30.0),
+                  ),
+                  //Professional Skills
+                  HeadingText('Professional Skills'),
+                  Container(
+                    width: double.infinity,
+                    color: Colors.white,
+                    height: 2.0,
+                    margin: EdgeInsets.only(
+                        left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
+                  ),
+                  ListItem('Java', 'Spring Boot Basic'),
+                  ListItem('HTML'),
+                  ListItem('JavaScript & TypeScript'),
+                  ListItem('Flutter', 'Basic'),
+                  ListItem('SQL', 'PostgreSQL, MS SQL, MySQL'),
+                  ListItem('git'),
+
+                  //Personal Skills
+
+                  HeadingText('Personal Skills'),
+                  Container(
+                    width: double.infinity,
+                    color: Colors.white,
+                    height: 2.0,
+                    margin: EdgeInsets.only(
+                        left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
+                  ),
+                  ListItem('Creative Spirit'),
+                  ListItem('Reliable and professional'),
+                  ListItem('Organized'),
+                  ListItem('Time Management'),
+                  ListItem('Team Player'),
+                  ListItem('Fast learner'),
+                  ListItem('Motivated'),
+                  // Education
+
+                ],
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 }
-
 
 class ListItem extends StatelessWidget {
   String title;
@@ -95,5 +138,27 @@ class ListItem extends StatelessWidget {
         ),
       );
     }
+  }
+}
+
+class HeadingText extends StatelessWidget {
+  String textHeading;
+
+  HeadingText(this.textHeading);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.6),
+      child: Text(
+        '${this.textHeading}',
+        style: TextStyle(
+          color: Color(0xFFFD4345),
+          fontWeight: FontWeight.bold,
+          fontSize: 25,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
